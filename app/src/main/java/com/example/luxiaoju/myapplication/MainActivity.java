@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void download() {
-        String urlStr = "";
+        String urlStr = "https://raw.githubusercontent.com/ddup4/filedownload/master/README.md";
 
         Request request = new Request.Builder().url(urlStr).build();
         FileOutputStream fos = null;
