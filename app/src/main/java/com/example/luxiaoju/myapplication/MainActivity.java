@@ -1,15 +1,15 @@
 package com.example.luxiaoju.myapplication;
 
+import android.os.Bundle;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -17,6 +17,7 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     private Button mBtnDownload;
     private OkHttpClient client = new OkHttpClient();
 
@@ -48,8 +49,8 @@ public class MainActivity extends AppCompatActivity {
         try {
             Response response = client.newCall(request).execute();
 
-            File filePath  = Environment.getExternalStorageDirectory();
-            File fileName = new File(filePath,"text.txt");
+            File filePath = Environment.getExternalStorageDirectory();
+            File fileName = new File(filePath, "text.txt");
             if (!fileName.exists()) {
                 fileName.createNewFile();
             }
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 // ignore
             }
         }
+        Log.d(TAG, "file download finish");
     }
 
 }
